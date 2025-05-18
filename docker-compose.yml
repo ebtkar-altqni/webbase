@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  mongodb-primary:
+    image: mongo:8
+    command: mongod --replSet rs0 --bind_ip_all
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017 --quiet
+      interval: 5s
+      timeout: 10s
+      retries: 5
+
+  mongodb-secondary:
+    image: mongo:8
+    command: mongod --replSet rs0 --bind_ip_all
+    depends_on:
+      mongodb-primary:
+        condition: service_healthy
+    volumes:
+      - mongodb_data:/data/db
+
+  mongodb-arbiter:
+    image: mongo:6
+    command: mongod --replSet rs0 --bind_ip_all --port 27018
+    depends_on:
+      mongodb-primary:
+        condition: service_healthy
+
+  init-replica:
+    image: mongo:8
+    depends_on:
+      mongodb-primary:
+        condition: service_healthy
+    command: >
+      bash -c " until mongosh --host mongodb-primary --eval 'rs.initiate({
+        _id: \"rs0\",
+        members: [
+          {_id: 0, host: \"mongodb-primary:27017\"},
+          {_id: 1, host: \"mongodb-secondary:27017\"},
+          {_id: 2, host: \"mongodb-arbiter:27018\", arbiterOnly: true}
+        ]
+      })'; do sleep 5; done "
+
+volumes:
+  mongodb_data:
