@@ -17,7 +17,7 @@ Modern Next.js 15 template with:
 
 ```bash
 # Clone and install
-git clone [your-repo-url] webbase
+git clone https://github.com/ebtkar-altqni/webbase.git
 cd webbase
 npm install
 
