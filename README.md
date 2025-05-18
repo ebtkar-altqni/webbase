@@ -15,11 +15,13 @@ Modern Next.js 15 template with:
 - Docker & Docker Compose
 - MongoDB Compass (optional)
 
-````bash
+```bash
 # Clone and install
 git clone [your-repo-url] webbase
 cd webbase
 npm install
+
+```
 
 ---
 
@@ -81,7 +83,7 @@ docker-compose -f docker-compose.prod.yml up --build -d
 # 2. Environment setup
 cp .env.example .env
 nano .env  # Edit variables as needed
-````
+```
 
 ---
 
@@ -141,10 +143,6 @@ npm run docker:prod
 
 4. **Visual Cues** - Emoji icons for quick scanning
 5. **Production Focus** - Includes complete deploy commands
-
----
-
-Need any adjustments for specific hosting providers common in Libya (e.g., HatifLibya, Libya Telecom)?
 
 ```
 
