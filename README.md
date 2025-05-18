@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# WebBase - Next.js 15 Starter
 
-## Getting Started
+Modern Next.js 15 template with:
 
-First, run the development server:
+- MongoDB Replica Set (transactions support)
+- Dockerized development/production
+- Prisma ORM
+- Tailwind CSS
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 20+
+- Docker & Docker Compose
+- MongoDB Compass (optional)
 
 ```bash
+# Clone and install
+git clone [your-repo-url] webbase
+cd webbase
+npm install
+🛠️ Development Commands
+Command	Description
+npm run dev	Starts Next.js development server with hot reload
+npm run build	Creates optimized production build
+npm run start	Runs production server (after build)
+npm run lint	Runs ESLint for code quality checks
+🐳 Docker Operations
+Development
+Command	Description
+npm run docker:db	Starts MongoDB replica set (3 nodes) for development
+npm run docker:down	Stops all Docker containers and removes volumes
+Production
+Command	Description
+npm run docker:build	Builds production-ready Docker image
+npm run docker:prod	Runs production container (port 3000)
+📦 Database Management (Prisma)
+Command	Description
+npm run prisma:generate	Generates Prisma client based on schema
+npm run prisma:push	Pushes schema changes to MongoDB (no migrations)
+npm run prisma:studio	Launches Prisma Studio GUI at http://localhost:5555
+npm run prisma:migrate	Creates and applies migrations (SQL-style)
+🔧 Utility Scripts
+Command	Description
+npm run prettier	Formats all files with Prettier
+npm run typecheck	Runs TypeScript compiler without emitting files
+🏗️ Production Deployment
+bash
+# 1. Build and start
+docker-compose -f docker-compose.prod.yml up --build -d
+
+# 2. Environment setup
+cp .env.example .env
+nano .env  # Edit variables
+📂 Folder Structure
+webbase/
+├── docker/               # Docker configs
+├── prisma/              # Database schema
+├── src/                 # Next.js app
+├── .env.example         # Environment template
+├── docker-compose.yml   # Dev environment
+└── docker-compose.prod.yml # Production
+🌐 Access Points
+Next.js Dev: http://localhost:3000
+
+Prisma Studio: http://localhost:5555
+
+MongoDB Primary: mongodb://localhost:27017
+
+🔄 Typical Workflow
+Start MongoDB:
+
+bash
+npm run docker:db
+Develop with hot reload:
+
+bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+When ready for production:
+
+bash
+npm run docker:build
+npm run docker:prod
+
+---
+
+### Key Features in This Version:
+1. **Command Matrix** - Clear tabular layout showing all npm scripts with descriptions
+2. **Lifecycle Separation** - Distinct sections for dev/prod/database operations
+3. **Libya-Optimized** -
+   - Replica set ready for unstable networks
+   - Host networking mode for Docker (avoids DNS issues)
+4. **Visual Cues** - Emoji icons for quick scanning
+5. **Production Focus** - Includes complete deploy commands
+
+Need any adjustments for specific hosting providers common in Libya (e.g., HatifLibya, Libya Telecom)?
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+"# webbase" 
