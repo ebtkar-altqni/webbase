@@ -1,4 +1,3 @@
-````md
 # WebBase - Next.js 15 Starter
 
 Modern Next.js 15 template with:
@@ -16,13 +15,11 @@ Modern Next.js 15 template with:
 - Docker & Docker Compose
 - MongoDB Compass (optional)
 
-```bash
+````bash
 # Clone and install
 git clone [your-repo-url] webbase
 cd webbase
 npm install
-```
-````
 
 ---
 
@@ -84,7 +81,7 @@ docker-compose -f docker-compose.prod.yml up --build -d
 # 2. Environment setup
 cp .env.example .env
 nano .env  # Edit variables as needed
-```
+````
 
 ---
 
